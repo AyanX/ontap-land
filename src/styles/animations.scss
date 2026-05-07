@@ -1,0 +1,65 @@
+// ─── Global animation utility classes ────────────────────────────────────────
+// Usage: add class `anim-fade-up` or `anim-fade-in` to a container.
+// When `.is-visible` is also present, the element animates in.
+// Stagger children using CSS nth-child delays (applied per component).
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+// Base state — hidden until .is-visible is toggled
+.anim-fade-up,
+.anim-fade-in,
+.anim-slide-right {
+  opacity: 0;
+}
+
+.anim-fade-up.is-visible {
+  animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-fade-in.is-visible {
+  animation: fadeIn 0.5s ease both;
+}
+
+.anim-slide-right.is-visible {
+  animation: slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+// Delay helpers — apply to children inside an animated container
+.anim-d1 { animation-delay: 0.08s  !important; }
+.anim-d2 { animation-delay: 0.16s  !important; }
+.anim-d3 { animation-delay: 0.24s  !important; }
+.anim-d4 { animation-delay: 0.32s  !important; }
+.anim-d5 { animation-delay: 0.40s  !important; }
+.anim-d6 { animation-delay: 0.48s  !important; }
+
+// Stagger group: direct children of .anim-stagger get nth-child delays
+.anim-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.anim-stagger > *:nth-child(2) { animation-delay: 0.13s; }
+.anim-stagger > *:nth-child(3) { animation-delay: 0.21s; }
+.anim-stagger > *:nth-child(4) { animation-delay: 0.29s; }
+.anim-stagger > *:nth-child(5) { animation-delay: 0.37s; }
+.anim-stagger > *:nth-child(6) { animation-delay: 0.45s; }
+
+// Respect prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up,
+  .anim-fade-in,
+  .anim-slide-right {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

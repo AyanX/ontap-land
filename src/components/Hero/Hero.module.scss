@@ -1,0 +1,466 @@
+@use '../../styles/main' as *;
+
+.hero {
+  padding-top: 68px;
+  background: linear-gradient(145deg, #f0f6ff 0%, #ffffff 35%, #f8fbff 65%, #eef5ff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* - Blobs - */
+.blobTopRight {
+  position: absolute;
+  top: -180px;
+  right: -180px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at 40% 40%, rgba(26, 115, 232, 0.13) 0%, rgba(14, 165, 233, 0.06) 50%, transparent 75%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatBlob 14s ease-in-out infinite;
+}
+
+.blobBottomLeft {
+  position: absolute;
+  bottom: -200px;
+  left: -150px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 60% 60%, rgba(14, 165, 233, 0.1) 0%, rgba(26, 115, 232, 0.05) 50%, transparent 75%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatBlob 18s ease-in-out infinite reverse;
+}
+
+.blobMid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(26, 115, 232, 0.04) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* - Grid mesh - */
+.gridMesh {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26, 115, 232, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 115, 232, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* - Vector shapes - */
+.vectorCircles {
+  position: absolute;
+  top: 80px;
+  right: 60px;
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  animation: spinSlow 40s linear infinite;
+
+  @media (max-width: $bp-lg) {
+    display: none;
+  }
+}
+
+.vectorSquare {
+  position: absolute;
+  bottom: 100px;
+  left: 30px;
+  width: 140px;
+  height: 140px;
+  pointer-events: none;
+  animation: spinSlow 50s linear infinite reverse;
+
+  @media (max-width: $bp-md) {
+    display: none;
+  }
+}
+
+.vectorDots {
+  position: absolute;
+  top: 180px;
+  left: 80px;
+  width: 130px;
+  height: 130px;
+  pointer-events: none;
+
+  @media (max-width: $bp-lg) {
+    display: none;
+  }
+}
+
+.vectorWave {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  width: 400px;
+  height: 80px;
+  pointer-events: none;
+
+  @media (max-width: $bp-md) {
+    display: none;
+  }
+}
+ 
+.container {
+  // Children use global anim-fade-up — no scroll trigger needed here
+
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: $space-16 $container-padding;
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: $space-16;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: 1fr;
+    gap: $space-10;
+    padding: $space-12 $container-padding;
+  }
+
+  @media (max-width: $bp-sm) {
+    padding: $space-8 $container-padding;
+    gap: $space-8;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.taglinePill {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  background: rgba(26, 115, 232, 0.08);
+  border: 1px solid rgba(26, 115, 232, 0.2);
+  border-radius: $radius-full;
+  padding: 6px $space-4;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-semibold;
+  color: #17ae9e ;
+  width: fit-content;
+
+  @media (max-width: $bp-sm) {
+    font-size: 13px;
+      padding: 4px 2px;
+      text-align: center;
+  }
+}
+
+.taglineDot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  background: #17ae9e ;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+ 
+}
+
+.headline {
+  font-family: $font-primary;
+  font-size: 52px;
+  font-weight: $font-weight-bold;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: $color-text-heading;
+  margin: 0;
+
+  @media (max-width: $bp-md) {
+    font-size: 38px;
+  }
+
+  @media (max-width: $bp-sm) {
+    font-size: 30px;
+    letter-spacing: -0.5px;
+  }
+}
+
+.description {
+  font-family: $font-primary;
+  font-size: $font-size-body-18;
+  font-weight: $font-weight-regular;
+  line-height: 1.65;
+  color: $color-text-body;
+  margin: 0;
+  max-width: 520px;
+}
+
+.benefitsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-medium;
+  color: $color-text-body;
+}
+
+.benefitIcon {
+  color: #17ae9e ;
+  flex-shrink: 0;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-primary;
+  font-size: $font-size-body-16;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  background: linear-gradient(135deg, #17ae9e 0%, #65b9b0  100%);
+  border-radius: $radius-md;
+  padding: 14px $space-7;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(26, 115, 232, 0.35);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(26, 115, 232, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.ctaSecondary {
+  font-family: $font-primary;
+  font-size: $font-size-body-16;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-bottom-color: $color-primary;
+  }
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-top: $space-2;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.ratingValue {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-bold;
+  color: $color-text-dark;
+}
+
+.ratingDivider {
+  color: $color-text-muted;
+}
+
+.ratingLabel {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-regular;
+  color: $color-text-muted;
+}
+
+/* - Form card - */
+.right {
+  @media (max-width: $bp-lg) {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.formCardWrap {
+  position: relative;
+}
+
+.formCardGlow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(ellipse at center, rgba(26, 115, 232, 0.12) 0%, transparent 70%);
+  border-radius: $radius-2xl;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.formCard {
+  background: $color-white;
+  border: 1px solid rgba(26, 115, 232, 0.12);
+  border-radius: $radius-2xl;
+  padding: $space-8;
+  box-shadow: 0 8px 40px rgba(26, 115, 232, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 1;
+}
+
+.formHeader {
+  margin-bottom: $space-6;
+  text-align: center;
+}
+
+.formTitle {
+  font-family: $font-primary;
+  font-size: $font-size-h2-24;
+  font-weight: $font-weight-bold;
+  color: $color-text-dark;
+  margin: 0 0 $space-1 0;
+}
+
+.formSubtitle {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-regular;
+  color: $color-text-muted;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-3;
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input {
+  width: 100%;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-regular;
+  color: $color-text-dark;
+  background: #f8faff;
+  border: 1.5px solid rgba(26, 115, 232, 0.15);
+  border-radius: $radius-md;
+  padding: 11px $space-4;
+  outline: none;
+  transition: border-color $transition-fast, box-shadow $transition-fast, background $transition-fast;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus {
+    border-color: #1a73e8;
+    background: $color-white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+  }
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-regular;
+  color: $color-text-body;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    margin-top: 2px;
+    accent-color: $color-primary;
+    flex-shrink: 0;
+  }
+
+  a {
+    color: #1a73e8;
+    text-decoration: underline;
+    cursor:none;
+  }
+}
+
+.submitBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  font-family: $font-primary;
+  font-size: $font-size-body-16;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  background:linear-gradient(135deg, #17ae9e 0%, #65b9b0  100%);
+  border: none;
+  border-radius: $radius-md;
+  padding: 14px $space-6;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(26, 115, 232, 0.35);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* - Animations - */
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.04); }
+  66% { transform: translate(-20px, 15px) scale(0.97); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}

@@ -1,0 +1,13 @@
+/* SignUp layout: full-height column so footer is always pushed to the bottom */
+.signupLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* The signup content grows to fill all available space between navbar and footer */
+.signupContent {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,83 @@
+@use '../../styles/main' as *;
+
+.section {
+  padding: $space-10 0;
+  background: $color-white;
+  overflow: hidden;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+}
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.heading {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-semibold;
+  color: $color-text-muted;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 $space-8 0;
+}
+
+.logoTrack {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logoSlide {
+  display: flex;
+  align-items: center;
+  gap: $space-16;
+  animation: scroll 25s linear infinite;
+  width: max-content;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  @media (max-width: 768px) {
+    gap:12px;
+  }
+
+  @media (max-width : 400px) {
+    gap:8px
+  }
+}
+
+.logoItem {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 70px;
+  opacity: 0.85;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.logoImg {
+  height: 65px;
+  width: auto;
+  object-fit: contain; 
+  transition: filter $transition-base;
+
+  &:hover {
+    filter: grayscale(0%);
+  }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

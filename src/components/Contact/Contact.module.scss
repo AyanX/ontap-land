@@ -1,0 +1,308 @@
+@use '../../styles/main' as *;
+
+.section {
+  padding: $space-20 0;
+  background: linear-gradient(145deg, #f0f6ff 0%, #e8f0fe 100%);
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 68px;
+}
+
+.blobContact {
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(26, 115, 232, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.blobContactBL {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.vectorDotsContact {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+  opacity: 0.35;
+
+  @media (max-width: $bp-md) {
+    display: none;
+  }
+}
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-10;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.ctaCard {
+  background:linear-gradient(135deg, #17ae9e 0%, #65b9b0  100%);
+  border-radius: $radius-xl;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  box-shadow: 0 8px 32px rgba(26, 115, 232, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 130px;
+    height: 130px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50%;
+  }
+}
+
+.ctaCardAlt {
+  background: $color-white;
+  border: 1.5px solid rgba(26, 115, 232, 0.15);
+  box-shadow: $shadow-md;
+
+  &::before, &::after {
+    display: none;
+  }
+}
+
+.ctaTitle {
+  font-family: $font-primary;
+  font-size: $font-size-h2-24;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+
+  .ctaCardAlt & {
+    color: $color-text-heading;
+  }
+}
+
+.ctaDesc {
+  font-family: $font-primary;
+  font-size: $font-size-body-16;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-loose;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+
+  .ctaCardAlt & {
+    color: $color-text-body;
+  }
+}
+
+.ctaBtn {
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: $font-size-body-15;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  background: $color-white;
+  border-radius: $radius-md;
+  padding: 11px $space-6;
+  text-decoration: none;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover { 
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: $bp-md) {
+    align-self: center;
+  }
+}
+
+.ctaBtnAlt {
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: $font-size-body-15;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  background: linear-gradient(135deg, #17ae9e 0%, #65b9b0  100%);
+  border-radius: $radius-md;
+  padding: 11px $space-6;
+  text-decoration: none;
+  width: fit-content;
+  box-shadow: 0 2px 12px rgba(26, 115, 232, 0.3);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-1px); 
+  }
+
+  @media (max-width: $bp-md) {
+    align-self: center;
+  }
+}
+
+.right {
+  background: $color-white;
+  border-radius: $radius-2xl;
+  padding: $space-8;
+  box-shadow: 0 8px 40px rgba(26, 115, 232, 0.1);
+  border: 1px solid rgba(26, 115, 232, 0.08);
+}
+
+.formHeading {
+  font-family: $font-primary;
+  font-size: $font-size-h2-24;
+  font-weight: $font-weight-bold;
+  color: $color-text-heading;
+  margin: 0 0 $space-6 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-3;
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input {
+  width: 100%;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  color: $color-text-dark;
+  background: #f8faff;
+  border: 1.5px solid rgba(26, 115, 232, 0.15);
+  border-radius: $radius-md;
+  padding: 11px $space-4;
+  outline: none;
+  transition: border-color $transition-fast, box-shadow $transition-fast, background $transition-fast;
+  box-sizing: border-box;
+
+  &::placeholder { color: $color-text-muted; }
+  &:focus {
+    border-color: $color-primary;
+    background: $color-white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+  }
+}
+
+.textarea {
+  width: 100%;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  color: $color-text-dark;
+  background: #f8faff;
+  border: 1.5px solid rgba(26, 115, 232, 0.15);
+  border-radius: $radius-md;
+  padding: 11px $space-4;
+  outline: none;
+  resize: vertical;
+  transition: border-color $transition-fast, box-shadow $transition-fast, background $transition-fast;
+  box-sizing: border-box;
+
+  &::placeholder { color: $color-text-muted; }
+  &:focus {
+    border-color: $color-primary;
+    background: $color-white;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+  }
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  color: $color-text-body;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    margin-top: 2px;
+    accent-color: $color-primary;
+    flex-shrink: 0;
+  }
+
+  a {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+.submitBtn {
+  width: 100%;
+  font-family: $font-primary;
+  font-size: $font-size-body-16;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  background:  linear-gradient(135deg, #17ae9e 0%, #65b9b0  100%);
+  border: none;
+  border-radius: $radius-md;
+  padding: 14px $space-6;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(26, 115, 232, 0.35);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.45);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}

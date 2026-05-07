@@ -1,0 +1,216 @@
+@use '../../styles/main' as *;
+
+.section {
+  padding: $space-20 0;
+  background: $color-bg-section;
+}
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-6;
+}
+
+.label {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.heading {
+  font-family: $font-primary;
+  font-size: $font-size-h2;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-relaxed;
+  color: $color-text-dark;
+  text-align: center;
+  margin: 0;
+
+  @media (max-width: $bp-md) {
+    font-size: 26px;
+    text-align: center;
+  }
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  justify-content: center;
+  width: 100%;
+
+  @media (max-width: $bp-md) {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+.tab {
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  color: $color-text-body;
+  background: $color-white;
+  border: 1.5px solid rgba($color-border, 0.6);
+  border-radius: $radius-full;
+  padding: $space-2 $space-5;
+  cursor: pointer;
+  transition: all $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &.tabActive {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+  }
+}
+
+.caseStudy {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-10;
+  align-items: center;
+  margin-top: $space-4;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.caseImage {
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  height: 380px;
+  width: 100%;
+  position: relative;
+
+  @media (max-width: $bp-md) {
+    height: 260px;
+  }
+
+  @media (max-width: $bp-sm) {
+    height: 210px;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.skeletonLoader {
+  border-radius: $radius-xl;
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.caseContent {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.caseTitle {
+  font-family: $font-primary;
+  font-size: $font-size-h3-20;
+  font-weight: $font-weight-semibold;
+  color: $color-text-dark;
+  margin: 0;
+}
+
+.caseDesc {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: $color-text-body;
+  margin: 0;
+}
+
+.challenges { 
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  list-style: none;
+}
+
+.challengeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  line-height: $line-height-relaxed;
+  color: $color-text-body;
+
+  &::before {
+    content: '';
+    height: 8px;
+    width: 8px;
+    background: $color-primary;
+    border-radius: $radius-full;
+    display: inline-block;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+}
+
+.challengeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  line-height: $line-height-relaxed;
+  color: $color-text-body;
+
+  
+}
+
+ 
+
+.outcome {
+  background: $color-primary-bg;
+  border-radius: $radius-lg;
+  padding: $space-5;
+  border-inline: 1px solid $color-primary-dark;
+}
+
+.outcomeLabel {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-semibold;
+  color: $color-primary;
+  margin: 0 0 $space-2 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.outcomeText {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: $color-text-body;
+  margin: 0;
+}

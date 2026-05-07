@@ -1,0 +1,128 @@
+@use '../../styles/main' as *;
+
+.section {
+  padding: $space-20 0;
+  background: $color-white;
+  overflow: hidden;
+  position: relative;
+}
+
+.blobGlobe {
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(26, 115, 232, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-12;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.heading {
+  font-family: $font-primary;
+  font-size: $font-size-h2;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  color: $color-text-heading;
+  margin: 0;
+  letter-spacing: -0.5px;
+
+  @media (max-width: $bp-md) {
+    font-size: 26px;
+  }
+}
+
+.description {
+  font-family: $font-primary;
+  font-size: $font-size-body-16;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-loose;
+  color: $color-text-body;
+  margin: 0;
+}
+
+.flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.flagItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-1;
+}
+
+.flagImg {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  object-fit: cover;
+  border: 2px solid rgba(26, 115, 232, 0.2);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: scale(1.15);
+    box-shadow: 0 3px 10px rgba(26, 115, 232, 0.2);
+  }
+}
+
+.flagLabel {
+  font-family: $font-primary;
+  font-size: 11px;
+  font-weight: $font-weight-medium;
+  color: $color-text-muted;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.globeImg {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 8px 32px rgba(26, 115, 232, 0.15));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}

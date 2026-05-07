@@ -1,0 +1,118 @@
+// #17ae9e 
+// #faa541
+
+// linear-gradient(135deg, #17ae9e 0%, #65b9b0  100%);
+
+
+
+$color-green-light:#52aea5 ;
+
+$color-green-light-2:#4a9d95;
+
+$color-primary: #17ae9e ;
+$color-primary-light: #5a9ef5;
+$color-primary-lighter: #bdd7fb;
+$color-primary-bg: rgba(26, 115, 232, 0.08);
+$color-primary-bg-light: rgba(26, 115, 232, 0.04);
+$color-primary-bg-hover: rgba(26, 115, 232, 0.12);
+$color-primary-dark: #faa541;
+
+$color-accent: #17ae9e ;
+$color-accent-dark: #17ae9e ;
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-text-dark: #0f172a;
+$color-text-body: #475569;
+$color-text-muted: #94a3b8;
+$color-text-heading: #0f172a;
+$color-border: #e2e8f0;
+$color-border-dark: #1e293b;
+
+$color-success: #22c55e;
+$color-teal: #14b8a6;
+$color-teal-dark: #0f9488;
+$color-teal-bg: rgba(20, 184, 166, 0.08);
+$color-dark: #0f172a;
+$color-bg-section: #f0f6ff;
+$color-bg-light: #e8f0fe;
+
+
+
+
+// Typography 
+// $font-primary:  'Inter';
+$font-primary:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-secondary: ui-sans-serif, system-ui, sans-serif;
+$font-roboto: 'Roboto', sans-serif;
+
+$font-size-h1: 52px;
+$font-size-h2: 36px;
+$font-size-h2-30: 30px;
+$font-size-h2-24: 24px;
+$font-size-h3-20: 20px;
+$font-size-body-18: 18px;
+$font-size-body-17: 17px;
+$font-size-body-16: 16px;
+$font-size-body-15: 15px;
+$font-size-body-14: 14px;
+$font-size-body-64: 64px;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.1;
+$line-height-snug: 1.2;
+$line-height-normal: 1.4;
+$line-height-relaxed: 1.5;
+$line-height-loose: 1.65;
+
+// Spacing 
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-7: 28px;
+$space-8: 32px;
+$space-10: 40px;
+$space-12: 48px;
+$space-14: 56px;
+$space-16: 64px;
+$space-20: 80px;
+$space-24: 96px;
+
+// - Border Radius 
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-2xl: 24px;
+$radius-full: 9999px;
+
+// - Shadows 
+$shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+$shadow-blue-sm: 0 2px 12px rgba(26, 115, 232, 0.15);
+$shadow-blue-md: 0 4px 24px rgba(26, 115, 232, 0.2);
+
+// - Transitions 
+$transition-fast: 0.15s ease;
+$transition-base: 0.25s ease;
+$transition-slow: 0.4s ease;
+
+// - Breakpoints
+$bp-xs:  375px;
+$bp-sm:  480px;
+$bp-600: 600px;
+$bp-md:  768px;
+$bp-lg:  1024px;
+$bp-xl:  1280px;
+$bp-2xl: 1440px;
+
+// - Container 
+$container-max: 1200px;
+$container-padding: 24px;

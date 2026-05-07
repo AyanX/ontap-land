@@ -1,0 +1,101 @@
+@use '../../styles/main' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color $transition-base, box-shadow $transition-base, background $transition-base;
+
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom-color: rgba(26, 115, 232, 0.1);
+    box-shadow: 0 2px 20px rgba(26, 115, 232, 0.08);
+  }
+}
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  text-decoration: none;
+  flex-shrink: 0;
+  height: 32px;
+}
+
+.logoImage {
+  height: 100%;
+  width: auto;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+// Shared button base
+.ctaButton {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-bold;
+  border: none;
+  border-radius: $radius-md;
+  padding: 10px $space-5;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// "Book a Free Demo" — gradient fill, hidden on small screens
+.demoBtn {
+  color: $color-white;
+  background: linear-gradient(135deg, #17ae9e 0%, #609b95 100%);
+  box-shadow: 0 1px 1px #365d59;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(26, 115, 232, 0.4);
+  }
+
+  @media (max-width: $bp-sm) {
+    display: none;
+  }
+}
+
+// "Sign Up" — outline style, always visible
+.signupBtn {
+  color: #17ae9e;
+  background: transparent;
+  border: 1.5px solid #17ae9e;
+  box-shadow: none;
+
+  &:hover {
+    background: rgba(23, 174, 158, 0.06);
+    box-shadow: 0 2px 10px rgba(23, 174, 158, 0.2);
+  }
+}

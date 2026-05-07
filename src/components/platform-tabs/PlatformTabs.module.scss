@@ -1,0 +1,644 @@
+@use "sass:color";
+
+// ─── OnTap Brand Palette ───
+$primary: #0DB5A0;
+$primary-dark: #0A9B88;
+$primary-light: #E6FAF7;
+$accent: #F5A623;
+$accent-light: #FFF5E0;
+$text-primary: #1A1A2E;
+$text-secondary: #4A4A68;
+$text-muted: #8A8AA3;
+$bg-body: #F8FAFC;
+$bg-card: #FFFFFF;
+$border: #E2E8F0;
+$border-light: #F1F5F9;
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// ─── Mixins ───
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ─── Section ───
+.platformSection {
+  background: linear-gradient(180deg, $bg-body 0%, #FFFFFF 100%);
+  padding: 80px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 48px 0;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
+
+// ─── Header ───
+.header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 64px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
+}
+
+.overline {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $primary;
+  background: $primary-light;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: $text-primary;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.highlight {
+  color: $primary;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba($primary, 0.12);
+    border-radius: 4px;
+    z-index: -1;
+  }
+}
+
+.subheading {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: $text-secondary;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+// ─── Grid ───
+.grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 48px;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 360px 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+// ─── Tabs Panel (Left) ───
+.tabsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 24px;
+
+  @media (max-width: 900px) {
+    position: relative;
+    top: 0;
+  }
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  background: $bg-card;
+  border: 1.5px solid $border-light;
+  border-radius: $radius-md;
+  padding: 0;
+  cursor: pointer;
+  transition: all $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: $primary;
+    border-radius: $radius-md 0 0 $radius-md;
+    transform: scaleY(0);
+    transition: transform $transition-base;
+  }
+
+  &:hover {
+    border-color: $border;
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+}
+
+.tabActive {
+  border-color: rgba($primary, 0.25);
+  background: linear-gradient(135deg, #FFFFFF 0%, $primary-light 100%);
+  box-shadow: $shadow-lg;
+
+  &::before {
+    transform: scaleY(1);
+  }
+
+  &:hover {
+    transform: translateY(0);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.tabHeader {
+  @include flex-between;
+  padding: 16px 20px;
+  gap: 12px;
+}
+
+.tabNumber {
+  @include flex-center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: $border-light;
+  color: $text-muted;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: all $transition-base;
+
+  .tabActive & {
+    background: $primary;
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba($primary, 0.3);
+  }
+}
+
+.tabIcon {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: $radius-sm;
+  background: $border-light;
+  color: $text-muted;
+  font-size: 1rem;
+  transition: all $transition-base;
+
+  .tabActive & {
+    background: rgba($primary, 0.1);
+    color: $primary;
+  }
+}
+
+.tabTitle {
+  flex: 1;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $text-primary;
+  transition: color $transition-base;
+
+  .tabActive & {
+    color: $primary-dark;
+  }
+}
+
+.tabChevron {
+  width: 16px;
+  height: 16px;
+  color: $text-muted;
+  transition: transform $transition-base;
+  flex-shrink: 0;
+}
+
+.tabChevronActive {
+  transform: rotate(90deg);
+  color: $primary;
+}
+
+// ─── Tab Body (expandable) ───
+.tabBody {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height $transition-slow, opacity $transition-base, padding $transition-base;
+  padding: 0 20px;
+}
+
+.tabBodyActive {
+  max-height: 300px;
+  opacity: 1;
+  padding: 0 20px 16px;
+}
+
+.tabDescription {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: $text-secondary;
+  margin: 0 0 12px;
+}
+
+.tabBullets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tabBullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: $text-secondary;
+  line-height: 1.5;
+}
+
+.tabBulletIcon {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  color: $primary;
+  margin-top: 2px;
+}
+
+// ─── Pagination Dots ───
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+
+  @media (min-width: 901px) {
+    display: none;
+  }
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: $border;
+  cursor: pointer;
+  transition: all $transition-base;
+  padding: 0;
+
+  &:hover {
+    background: $primary-light;
+    transform: scale(1.2);
+  }
+}
+
+.dotActive {
+  background: $primary;
+  width: 24px;
+  border-radius: 4px;
+}
+
+// ─── Content Panel (Right) ───
+.contentPanel {
+  position: relative;
+  min-height: 520px;
+
+  @media (max-width: 900px) {
+    min-height: auto;
+  }
+}
+
+.contentCard {
+  background: $bg-card;
+  border: 1.5px solid $border-light;
+  border-radius: $radius-xl;
+  padding: 40px;
+  box-shadow: $shadow-xl;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba($primary, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba($accent, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: 24px;
+    border-radius: $radius-lg;
+  }
+}
+
+// ─── Content Animations ───
+.contentEnter {
+  animation: contentSlideIn 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.contentExit {
+  animation: contentSlideOut 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes contentSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes contentSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+    filter: blur(2px);
+  }
+}
+
+// ─── Content Inner ───
+.contentHeader {
+  margin-bottom: 32px;
+}
+
+.contentBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $primary;
+  background: $primary-light;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  margin-bottom: 16px;
+}
+
+.contentTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: $text-primary;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 768px) {
+    font-size: 1.375rem;
+  }
+}
+
+.contentDescription {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $text-secondary;
+  margin: 0;
+}
+
+.contentBody {
+  margin-bottom: 32px;
+}
+
+.contentSubheading {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin: 0 0 16px;
+}
+
+.bulletList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bulletItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: $bg-body;
+  border-radius: $radius-md;
+  border: 1px solid $border-light;
+  transition: all $transition-base;
+
+  &:hover {
+    background: #FFFFFF;
+    border-color: rgba($primary, 0.2);
+    box-shadow: $shadow-sm;
+    transform: translateX(4px);
+  }
+}
+
+.bulletIcon {
+  @include flex-center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: $primary-light;
+  color: $primary;
+  font-size: 0.875rem;
+  margin-top: 2px;
+  transition: all $transition-base;
+
+  .bulletItem:hover & {
+    background: $primary;
+    color: #FFFFFF;
+    transform: scale(1.1);
+  }
+}
+
+.bulletText {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: $text-secondary;
+  font-weight: 500;
+}
+
+// ─── Footer ───
+.contentFooter {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid $border-light;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  color: #FFFFFF;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: $radius-md;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  box-shadow: 0 4px 14px rgba($primary, 0.3);
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba($primary, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.ctaIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform $transition-base;
+
+  .ctaButton:hover & {
+    transform: translateX(4px);
+  }
+}
+
+.learnMore {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $text-muted;
+  text-decoration: none;
+  transition: color $transition-base;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $primary;
+    transition: width $transition-base;
+    border-radius: 1px;
+  }
+
+  &:hover {
+    color: $primary;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// ─── Staggered bullet animation ───
+.contentEnter .bulletItem {
+  opacity: 0;
+  animation: bulletStagger 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{100 + ($i - 1) * 80}ms;
+    }
+  }
+}
+
+@keyframes bulletStagger {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

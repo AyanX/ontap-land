@@ -1,0 +1,267 @@
+@use '../../styles/main' as *;
+
+.section {
+  padding: $space-20 0;
+  background: $color-white;
+
+  @media (max-width: $bp-md) {
+    padding: $space-12 0;
+  }
+}
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  align-items: center;
+
+  @media (max-width: $bp-md) {
+    align-items: center;
+  }
+}
+
+.topCard {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-8;
+  align-items: center;
+  background: $color-bg-section;
+  border-radius: $radius-2xl;
+  padding: $space-8;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+    padding: $space-6;
+  }
+}
+
+.bottomRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-6;
+
+  @media (max-width: $bp-600) {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.bottomCard {
+  border-radius: $radius-2xl;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardSecurity {
+  background: $color-dark;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: $bp-md) {
+    padding: $space-6;
+  }
+
+  .cardTitle {
+    color: $color-white;
+  }
+
+  .cardDesc {
+    color: rgba($color-white, 0.75);
+  }
+
+  .tag {
+    color: $color-teal;
+    background: rgba($color-teal, 0.12);
+    border-color: rgba($color-teal, 0.3);
+  }
+
+  .badge {
+    color: $color-teal;
+    border-color: $color-teal;
+    background: rgba($color-teal, 0.1);
+  }
+}
+
+.cardImageOnly {
+  min-height: 200px;
+  display: flex;
+  align-items: stretch;
+border: 1px solid rgba(14, 22, 6, 0.348);
+    @media (max-width: $bp-600) {
+      min-height: 150px;
+    }
+  
+    @media (max-width: $bp-sm) {
+      min-height: 120px;
+    }
+  .imageGrid {
+    flex: 1;
+  }
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  gap: $space-3;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+    gap: $space-2;
+  }
+}
+
+.bottomImg {
+  width: 100%;
+  height:auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: $radius-lg;
+ 
+
+  @media (max-width: $bp-600) {
+    height: 220px;
+  }
+
+  @media (max-width: $bp-sm) {
+    height: 180px;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.cardTitle {
+  font-family: $font-primary;
+  font-size: $font-size-h2-24;
+  font-weight: $font-weight-semibold;
+  color: $color-dark;
+  margin: 0;
+}
+
+.cardDesc {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: $color-text-body;
+  margin: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.tag {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-medium;
+  color: $color-teal;
+  background: $color-teal-bg;
+  border-radius: $radius-full;
+  padding: $space-1 $space-3;
+  border: 1px solid rgba($color-teal, 0.3);
+}
+
+.badges {
+  display: flex;
+  gap: $space-3;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-family: $font-primary;
+  font-size: $font-size-body-14;
+  font-weight: $font-weight-bold;
+  color: $color-teal;
+  background: rgba($color-teal, 0.1);
+  border: 2px solid $color-teal;
+  border-radius: $radius-md;
+  padding: $space-2 $space-4;
+}
+
+.cardImage {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img{
+    width: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: $bp-md) {
+    order: -1;
+  }
+}
+
+.img { 
+    height: auto;
+    min-height: 50px;
+    max-height: 290px;
+    width:100%;
+  object-fit: cover;
+  display: block;
+  border-radius: $radius-lg;
+}
+
+.ctaBtn {
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: $font-size-body-16;
+  font-weight: $font-weight-medium;
+  color: $color-white;
+  background: $color-primary;
+  border-radius: $radius-md;
+  padding: 12px $space-8;
+  text-decoration: none;
+  margin-top: $space-4;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: $color-primary-dark;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: $bp-md) {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    width: fit-content;
+  }
+}
